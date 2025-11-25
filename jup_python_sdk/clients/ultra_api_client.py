@@ -109,6 +109,23 @@ class UltraApiClient(JupiterClient):
 
         return response.json()  # type: ignore
 
+    def holdings(self, address: str) -> Dict[str, Any]:
+        """
+        Get token holdings of an account from the Jupiter Ultra API.
+
+        Args:
+            address (str): The public key of the account to get holdings for.
+
+        Returns:
+            dict: The dict api response containing portfolio value and detailed
+                  token account information organized by mint address.
+        """
+        url = f"{self.base_url}/ultra/v1/holdings/{address}"
+        response = self.client.get(url, headers=self._get_headers())
+        response.raise_for_status()
+
+        return response.json()  # type: ignore
+
     def shield(self, mints: list[str]) -> Dict[str, Any]:
         """
         Get token information and warnings for specific mints
