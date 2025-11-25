@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "jup-python-sdk"
-version = "1.1.0"
+version = "1.1.1"
 description = "Python SDK for Jupiter Exchange APIs."
 authors = ["Fiji <charismoutafidis@gmail.com>"]
 license = "MIT"
@@ -18,7 +18,7 @@ classifiers = [
 python = "^3.9"
 httpx = "^0.28.1"
 pydantic = "^2.11.3"
-solders = "^0.26.0"
+solders = "^0.27.0"
 base58 = "^2.1.1"
 solana = "^0.36.6"
 

@@ -92,10 +92,13 @@ class JupiterClient:
         wallet_index = account_keys.index(wallet.pubkey())
 
         signers = list(versioned_transaction.signatures)
-        signers[wallet_index] = wallet  # type: ignore
 
-        return VersionedTransaction(
-            versioned_transaction.message, signers  # type: ignore
+        message_bytes = bytes(versioned_transaction.message)
+        your_signature = wallet.sign_message(message_bytes)
+        signers[wallet_index] = your_signature
+
+        return VersionedTransaction.populate(
+            versioned_transaction.message, signers
         )
 
     def _serialize_versioned_transaction(
